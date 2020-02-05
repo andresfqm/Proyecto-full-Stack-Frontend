@@ -1,12 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatSidenavModule, MatToolbarModule, MatButtonModule, MatDividerModule, MatMenuModule, MatIconModule} from '@angular/material';
-//import {MatToolbarModule} from '@angular/material/toolbar';
-//import {MatButtonModule} from '@angular/material/button';
-
-
-
-
+import {MatSidenavModule, MatToolbarModule, MatButtonModule, MatDividerModule, MatMenuModule, MatIconModule, MatTableModule, MatFormFieldModule, MatInputModule, MatSortModule, MatPaginatorModule, MatCardModule, MatSnackBarModule, MatDialogModule} from '@angular/material';
 
 @NgModule({
   declarations: [],
@@ -17,17 +11,31 @@ import {MatSidenavModule, MatToolbarModule, MatButtonModule, MatDividerModule, M
     MatButtonModule,
     MatDividerModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatCardModule,
+    MatSnackBarModule,
+    MatDialogModule
   ],
-  // Utilizamos el siguiente arreglo para poder usar los componentes afuera de la carpeta
   exports: [
-    CommonModule,
     MatSidenavModule,
     MatToolbarModule,
     MatButtonModule,
     MatDividerModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatCardModule,
+    MatSnackBarModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule { }

@@ -8,19 +8,24 @@ import { MaterialModule } from './material/material.module';
 import { PacienteComponent } from './pages/paciente/paciente.component';
 import { MedicoComponent } from './pages/medico/medico.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { PacienteEdicionComponent } from './pages/paciente/paciente-edicion/paciente-edicion.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PacienteComponent,
-    MedicoComponent
+    MedicoComponent,
+    PacienteEdicionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
