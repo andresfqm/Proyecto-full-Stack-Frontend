@@ -11,12 +11,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { PacienteEdicionComponent } from './pages/paciente/paciente-edicion/paciente-edicion.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     PacienteComponent,
     MedicoComponent,
-    PacienteEdicionComponent
+    PacienteEdicionComponent,
+  
   ],
   imports: [
     BrowserModule,
