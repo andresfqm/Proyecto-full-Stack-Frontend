@@ -2,7 +2,7 @@ import { environment } from './../../../environments/environment';
 import { Router } from '@angular/router';
 import { MenuService } from './../../_service/menu.service';
 import { LoginService } from './../../_service/login.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import '../../../assets/login-animation.js';
 
@@ -17,11 +17,13 @@ export class LoginComponent implements OnInit {
   clave: string;
   mensaje: string;
   error: string;
+  nombreUsuario : string;
 
   constructor(
     private loginService: LoginService,
     private menuService: MenuService,
     private router: Router
+
   ) { }
 
   ngOnInit() {
@@ -32,13 +34,17 @@ export class LoginComponent implements OnInit {
   }
 
   iniciarSesion() {
-    this.loginService.login(this.usuario, this.clave).subscribe(data => {
-
+      this.loginService.login(this.usuario, this.clave).subscribe(data => {
       sessionStorage.setItem(environment.TOKEN_NAME, data.access_token);
+     
 
       const helper = new JwtHelperService();
 
+      // Esta variable contiene el usuario y los roles
       let decodedToken = helper.decodeToken(data.access_token);
+
+      sessionStorage.setItem("nombre", decodedToken.user_name);
+      sessionStorage.setItem("rol", decodedToken.authorities);
 
       //console.log(decodedToken);
       this.menuService.listarPorUsuario(decodedToken.user_name).subscribe(data => {
@@ -48,6 +54,10 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['paciente']);
 
     });
+  }
+
+  procesaPropagar(mensaje) {
+    console.log(mensaje);
   }
 
 }

@@ -12,6 +12,7 @@ export class MenuService {
   menuCambio = new Subject<Menu[]>();
 
   url: string = `${environment.HOST}/menus`;
+  //url: string = `${environment.HOST}/${environment.MICRO_CR}/menus`;
 
   constructor(private http: HttpClient) { }
 
@@ -23,7 +24,7 @@ export class MenuService {
   }
 
   listarPorUsuario(nombre: string){
-    let token = sessionStorage.getItem(environment.TOKEN_NAME);    
+    let token = sessionStorage.getItem(environment.TOKEN_NAME);  
     return this.http.post<Menu[]>(`${this.url}/usuario`, nombre, {
       headers: new HttpHeaders().set('Authorization', `bearer ${token}`).set('Content-Type', 'application/json')
     });

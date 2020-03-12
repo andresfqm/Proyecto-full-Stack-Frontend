@@ -18,6 +18,7 @@ import { MedicoComponent } from './pages/medico/medico.component';
 import { PacienteComponent } from './pages/paciente/paciente.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PerfilComponent } from './pages/login/perfil/perfil.component';
 
 
 const routes: Routes = [
@@ -47,7 +48,10 @@ const routes: Routes = [
   { path: 'reporte', component: ReporteComponent, canActivate: [GuardService] },
   { path: 'not-403', component: Not403Component },
   { path: 'not-404', component: Not404Component },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent},
+  {path: 'perfil', component: PerfilComponent},
+ 
+
   {
     path: 'recuperar', component: RecuperarComponent, children: [
       { path: ':token', component: TokenComponent }
