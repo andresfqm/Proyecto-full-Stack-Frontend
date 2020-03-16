@@ -33,6 +33,10 @@ import { RecuperarComponent } from './pages/login/recuperar/recuperar.component'
 import { TokenComponent } from './pages/login/recuperar/token/token.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { PerfilComponent } from './pages/login/perfil/perfil.component';
+import { SignosVitalesComponent } from './pages/signos-vitales/signos-vitales.component';
+import { SignosVitalesEdicionComponent } from './pages/signos-vitales/signos-vitales-edicion/signos-vitales-edicion.component';
+import { PacienteDialogoComponent } from './pages/paciente/paciente-dialogo/paciente-dialogo.component';
+
 
 export function tokenGetter() {
   let tk = sessionStorage.getItem(environment.TOKEN_NAME);
@@ -61,7 +65,10 @@ export function tokenGetter() {
     Not404Component,
     RecuperarComponent,
     TokenComponent,
-    PerfilComponent
+    PerfilComponent,
+    SignosVitalesComponent,
+    SignosVitalesEdicionComponent,
+    PacienteDialogoComponent
   ],
   entryComponents: [MedicoDialogoComponent, BuscarDialogoComponent],
   imports: [

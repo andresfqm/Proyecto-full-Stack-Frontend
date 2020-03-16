@@ -19,6 +19,8 @@ import { PacienteComponent } from './pages/paciente/paciente.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PerfilComponent } from './pages/login/perfil/perfil.component';
+import { SignosVitalesComponent } from './pages/signos-vitales/signos-vitales.component';
+import { SignosVitalesEdicionComponent } from './pages/signos-vitales/signos-vitales-edicion/signos-vitales-edicion.component';
 
 
 const routes: Routes = [
@@ -28,6 +30,10 @@ const routes: Routes = [
       { path: 'edicion/:id', component: PacienteEdicionComponent }
     ], canActivate: [GuardService]
   },
+  {path: 'signos-vitales', component: SignosVitalesComponent, children: [
+    { path: 'nuevo', component: SignosVitalesEdicionComponent },
+    { path: 'edicion/:id', component: SignosVitalesEdicionComponent}
+  ], canActivate: [GuardService]},
   {
     path: 'especialidad', component: EspecialidadComponent, children: [
       { path: 'nuevo', component: EspecialidadEdicionComponent },

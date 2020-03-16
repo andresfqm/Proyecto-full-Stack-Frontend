@@ -28,7 +28,7 @@ export class ServerErrorsInterceptor implements HttpInterceptor {
                 console.log(err);
                 //https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
                 if (err.status === 400) {
-                    this.snackBar.open(err.message, 'ERROR 400', { duration: 5000 });
+                    this.snackBar.open("Error de autenticación", 'ERROR 400', { duration: 5000 });
                 }
                 else if (err.status === 401) {
                     //console.log(err.message);

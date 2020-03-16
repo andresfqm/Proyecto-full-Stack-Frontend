@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   clave: string;
   mensaje: string;
   error: string;
-  nombreUsuario : string;
+  nombreUsuario: string;
 
   constructor(
     private loginService: LoginService,
@@ -34,9 +34,12 @@ export class LoginComponent implements OnInit {
   }
 
   iniciarSesion() {
-      this.loginService.login(this.usuario, this.clave).subscribe(data => {
+    this.loginService.login(this.usuario, this.clave).subscribe(data => {
+      console.log("llego al metodo iniciar sesion con la avriable data");
+      console.log(data);
+
       sessionStorage.setItem(environment.TOKEN_NAME, data.access_token);
-     
+
 
       const helper = new JwtHelperService();
 
