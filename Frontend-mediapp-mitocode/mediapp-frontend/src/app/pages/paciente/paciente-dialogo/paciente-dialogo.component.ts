@@ -1,8 +1,9 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import { Paciente } from 'src/app/_model/paciente';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PacienteService } from 'src/app/_service/paciente.service';
 import { switchMap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-paciente-dialogo',
@@ -15,7 +16,8 @@ export class PacienteDialogoComponent implements OnInit {
   constructor(
     private dialogRef: MatDialogRef<PacienteDialogoComponent>,
     @Inject(MAT_DIALOG_DATA) private data: Paciente,
-    private pacienteService : PacienteService
+    private pacienteService: PacienteService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -34,27 +36,31 @@ export class PacienteDialogoComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  operar(){
-    if (this.paciente!= null) {
+  operar() {
+    if (this.paciente != null && this.paciente.idPaciente > 0) {
       //MODIFICAR
       //BUENO PRACTICA
-      this.pacienteService.modificar(this.paciente).pipe(switchMap( () => {
+      this.pacienteService.modificar(this.paciente).pipe(switchMap(() => {
         return this.pacienteService.listar();
       })).subscribe(data => {
         this.pacienteService.pacienteCambio.next(data);
         this.pacienteService.mensajeCambio.next('SE MODIFICO');
-      });      
-    }else{
+
+      });
+    } else {
       //REGISTRAR      
-      //PRACTICA COMUN
-      this.pacienteService.registrar(this.paciente).subscribe(() => {
-        this.pacienteService.listar().subscribe(data => {
-          this.pacienteService.pacienteCambio.next(data);
-          this.pacienteService.mensajeCambio.next('SE REGISTRO');
-        });
+      //BUENO PRACTICA
+      this.pacienteService.registrar(this.paciente).pipe(switchMap(() => {
+        return this.pacienteService.listar();
+      })).subscribe(data => {
+        this.pacienteService.pacienteCambio.next(data);
+        this.pacienteService.mensajeCambio.next('SE REGISTRO');
+
       });
     }
     this.dialogRef.close();
+  
   }
 
 }
+

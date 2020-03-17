@@ -1,9 +1,8 @@
 <mat-card>Ingrese los datos del paciente</mat-card>
 
 <form class="example-container" [formGroup]="form" #frmPaciente="ngForm" (ngSubmit)="operar()">
-
     <div [hidden]="true">
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width">frmPaciente
             <input matInput placeholder="ID" required formControlName="id">
         </mat-form-field>
     </div>

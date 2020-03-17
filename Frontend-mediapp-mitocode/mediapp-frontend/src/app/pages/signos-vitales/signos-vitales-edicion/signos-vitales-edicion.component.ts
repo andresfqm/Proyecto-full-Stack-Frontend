@@ -54,6 +54,11 @@ export class SignosVitalesEdicionComponent implements OnInit {
       this.edicion = params['id'] != null;
       this.initForm();
     });
+
+    this.pacienteService.pacienteCambio.subscribe(data => {
+      this.listarPacientes();
+      });
+
   }
 
   filtrarPacientes(val : any){    
@@ -67,7 +72,8 @@ export class SignosVitalesEdicionComponent implements OnInit {
   }
 
   listarPacientes() {
-    this.pacienteService.listar().subscribe(data => {
+    
+    this.pacienteService.listar().subscribe(data => { 
       this.pacientes = data;
     });
   }

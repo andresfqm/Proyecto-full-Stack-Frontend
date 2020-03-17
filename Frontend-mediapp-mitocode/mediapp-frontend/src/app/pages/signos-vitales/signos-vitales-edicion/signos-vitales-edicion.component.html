@@ -7,10 +7,12 @@
             <input matInput placeholder="ID" required formControlName="id">
         </mat-form-field>
     </div>
-    
-    <button mat-fab color="accent" (click)="abrirDialogo()" style="float: right; margin-right: 20px">
-        <mat-icon>create</mat-icon>
-    </button>
+
+    <div>
+        <button mat-raised-button="accent" color="accent" (click)="abrirDialogo()" style="float: right; margin-right: 20px">
+            Nuevo Paciente
+        </button>
+    </div>
     
     <mat-form-field>
         <input type="text" placeholder="Paciente" matInput [matAutocomplete]="autoPaciente"
