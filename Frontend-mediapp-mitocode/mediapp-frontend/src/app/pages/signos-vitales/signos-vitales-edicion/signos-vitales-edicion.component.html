@@ -8,22 +8,30 @@
         </mat-form-field>
     </div>
 
-    <div>
-        <button mat-raised-button="accent" color="accent" (click)="abrirDialogo()" style="float: right; margin-right: 20px">
-            Nuevo Paciente
-        </button>
+    <div *ngIf="habilitar == true; then habilitarButton">
     </div>
-    
+
+    <ng-template #habilitarButton>
+        <div>
+            <button mat-raised-button="accent" color="accent" (click)="abrirDialogo()"
+                style="float: right; margin-right: 20px">
+                Nuevo Paciente
+            </button>
+        </div>
+    </ng-template>
+
+
     <mat-form-field>
         <input type="text" placeholder="Paciente" matInput [matAutocomplete]="autoPaciente"
             [formControl]="myControlPaciente" formControlName="paciente">
     </mat-form-field>
-    <mat-autocomplete #autoPaciente="matAutocomplete" [displayWith]="mostrarPaciente"
-        (optionSelected)="seleccionarPaciente($event)">
-        <mat-option *ngFor="let p of pacientesFiltrados | async" [value]="p">
-            {{ p.nombres }} {{p.apellidos}}
-        </mat-option>
-    </mat-autocomplete>
+
+        <mat-autocomplete #autoPaciente="matAutocomplete" [displayWith]="mostrarPaciente"
+            (optionSelected)="seleccionarPaciente($event)">
+            <mat-option *ngFor="let p of pacientesFiltrados | async" [value]="p">
+                {{ p.nombres }} {{p.apellidos}}
+            </mat-option>
+        </mat-autocomplete>
 
     <mat-form-field class="example-full-width">
         <input matInput placeholder="Fecha" required formControlName="fecha">

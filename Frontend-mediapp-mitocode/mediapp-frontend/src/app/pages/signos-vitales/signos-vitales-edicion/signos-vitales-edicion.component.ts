@@ -26,6 +26,8 @@ export class SignosVitalesEdicionComponent implements OnInit {
   fechaSeleccionada: Date = new Date();
   maxFecha: Date = new Date();
 
+  habilitar : boolean;
+
   myControlPaciente: FormControl = new FormControl();
 
   constructor(   
@@ -36,6 +38,7 @@ export class SignosVitalesEdicionComponent implements OnInit {
     private dialog : MatDialog) { }
 
   ngOnInit(): void {
+    this.habilitar = true;
     this.form = new FormGroup({
       'id' : new FormControl(0),
       'paciente': this.myControlPaciente,
@@ -115,6 +118,7 @@ export class SignosVitalesEdicionComponent implements OnInit {
 
   initForm(){
     if(this.edicion){
+      this.habilitar = false;
       this.signosService.listarPorId(this.id).subscribe(data => {
         this.form = new FormGroup({
           'id': new FormControl(data.idSigno),
