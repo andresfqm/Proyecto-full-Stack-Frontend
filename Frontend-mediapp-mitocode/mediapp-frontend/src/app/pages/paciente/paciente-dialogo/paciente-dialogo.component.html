@@ -22,7 +22,15 @@
     <mat-form-field class="example-full-width">
         <input matInput placeholder="Email" required [(ngModel)]="paciente.email">
     </mat-form-field>
+    <div *ngIf="paciente.nombres !=null && paciente.email != null && paciente.dni !=null; then loggedIn">
+    </div>
 
-    <button mat-raised-button color="primary" (click)="operar()">Aceptar</button>
+    <ng-template #loggedIn>
+
+        <button mat-raised-button color="primary" (click)="operar()">Aceptar</button>
+
+    </ng-template>
+
+
     <button mat-raised-button color="accent" (click)="cancelar()">Cancelar</button>
 </div>
